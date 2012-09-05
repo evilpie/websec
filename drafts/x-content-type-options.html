@@ -38,13 +38,13 @@ a code { text-decoration: underline }
 <body class=draft>
 <div class=head id=head><p><a class=logo href=http://www.whatwg.org/><img alt=WHATWG height=101 src=http://www.whatwg.org/images/logo width=101></a></p>
 <h1>X-Content-Type-Options</h1>
-<h2 class="no-num no-toc" id=work-in-progress-&mdash;-last-update-31-august-2012>Work in Progress &mdash; Last Update 31 August 2012</h2>
+<h2 class="no-num no-toc" id="work-in-progress-&mdash;-last-update-5-september-2012">Work in Progress &mdash; Last Update 5 September 2012</h2>
 <dl>
  <dt>Latest version:
- <dd><a href=http://mimesniff.spec.whatwg.org/>http://mimesniff.spec.whatwg.org/</a>
+ <dd><a href="http://mimesniff.spec.whatwg.org/">http://mimesniff.spec.whatwg.org/</a>
 
  <dt>Version history:
- <dd><a href=https://github.com/abarth/websec/commits/master/drafts/sniff.html>https://github.com/abarth/websec/commits/master/drafts/sniff.html</a>
+ <dd><a href="https://github.com/evilpie/websec/commits/master/drafts/x-content-type-options.html">https://github.com/evilpie/websec/commits/master/drafts/x-content-type-options.html</a>
 
  <dt>Issues:
  <dd>To send feedback by e-mail: <a href=mailto:whatwg@whatwg.org>whatwg@whatwg.org</a>
@@ -55,10 +55,10 @@ a code { text-decoration: underline }
 </div>
 
 
-<h2 class=no-num id=table-of-contents>Table of contents</h2>
+<h2 class="no-num" id="table-of-contents">Table of contents</h2>
 
 <!--begin-toc-->
-<ol class=toc>
+<ol class="toc">
  <li><a class=no-num href=#table-of-contents>Table of contents</a></li>
  <li><a class=no-num href=#abstract>Abstract</a></li>
  <li><a href=#introduction><span class=secno>1 </span>Introduction</a></li>
@@ -67,18 +67,22 @@ a code { text-decoration: underline }
 <!--end-toc-->
 
 
-<h2 id=abstract>Abstract</h2>
+<h2 id="abstract">Abstract</h2>
 <p>
 Often HTTP responses are delivered with a wrong or even missing <code>Content-Type</code>. 
-In order to be compatible with these server, User Agents employ content sniffing of the HTTP response, 
+In order to be compatible with these servers, User Agents employ content sniffing of the HTTP response, 
 this can be a security hole, because untrusted content might be executed or displayed. 
 <code>X-Content-Type-Options: nosniff</code> can be used to forcefully disable sniffing in the User Agent.
 </p>
 
-<h2 id=introduction><span class=secno>1 </span>Introduction</h2>
+<h2 id="introduction"><span class="secno">1</span>&nbsp;Introduction</h2>
+The HTTP <code>X-Content-Type-Options</code> header field indiciates wether the User Agent should
+do mimetype sniffing for the requested resource. The only actionable value for the
+header field is <code>nosniff</code> at the moment, which should disable certain mime sniffing. This means when the <code>Content-Type</code> header field is specified, the user agent should try to render or execute the content according to this type, even when the operation is bound to produce failures.
+When the header field doesn't exists the User Agents should procced as if the
+<code>Content-Type</code> was set to <code>text/plain</code>. This is done for compatibility reasons.
 
-
-<h2 class=no-num id=acknowledgements>Acknowledgements</h2>
+<h2 class="no-num" id="acknowledgements">Acknowledgements</h2>
 <p>Thanks to:
 
 <ul>
